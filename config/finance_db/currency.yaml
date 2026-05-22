@@ -1,0 +1,6 @@
+currencies:
+  - "EUR"
+  - "USD"
+  - "GBP"
+  - "CHF"
+  - "JPY"  # Tu peux maintenant en ajouter une ici sans toucher au code !

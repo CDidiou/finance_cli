@@ -1,0 +1,44 @@
+schema_version: v1.0
+asset_type: savings_account
+mnemo: liva
+name: Livret A
+ceiling: 22950
+taxation: 'No'
+guarantee: 100
+performance:
+  '2026': 1.5
+quote:
+  quote_always_one: 'Yes'
+  aggregator: manual
+  ticker: liva
+py_finance:
+  asset_class:
+    cash: 100
+    fixed_income: 0
+    real_estate: 0
+    commodities: 0
+    equity: 0
+    alternate: 0
+  risk:
+    low_risk:
+      total: 100
+      savings_account: 100
+      fonds_euros: 0
+      monetary: 0
+    mid_risk:
+      total: 0
+      commodities: 0
+      gold: 0
+      real_estate: 0
+      fixed_income: 0
+      aristocrats: 0
+    high_risk:
+      total: 0
+      world: 0
+      usa: 0
+      em: 0
+      eu: 0
+      other_equity: 0
+      crypto: 0
+comments: '02/2020: 0.5% - 02/2022: 1.0% - 08/2022: 2.0% - 02/2023: 3.0% - 02/2025: 2.4% - 08/2025: 1.7% - 02/2026: 1.5%'
+

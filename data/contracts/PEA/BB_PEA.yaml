@@ -1,0 +1,80 @@
+schema_version: 1.0
+last_update: 2026-05-14
+
+broker: "BoursoBank"
+contract_ref: "../PEA.yaml"   # Référence au fichier générique
+link: "https://www.boursobank.com/bourse/pea-plan-epargne-actions"
+
+
+
+
+frais:
+  droits_garde: 0
+  tenue_compte: 0
+  inactivite: 0
+  cloture: 0
+  transfert_sortant: "Selon barème (souvent remboursés les 2 premiers)"
+
+  courtage:
+    plafond_legal: 0.5   # maximum légal sur PEA
+    profil:
+      - offre: "Découverte (recommandée)"
+        petit_ordre: "1,99 € (< 500 €) puis 0,60 % (plafonné à 0,5 % sur PEA)"
+        commentaire: "Offre par défaut recommandée pour la plupart des investisseurs"
+      - offre: Trader
+        conditions: "16,65 € jusqu'à 7 750 € puis 0,22 % (plafonné à 0,5 %)"
+      - offre: "Trader Pro"
+        conditions: "9,90 € jusqu'à 10 000 € puis 0,12 % (plafonné à 0,5 %)"
+    boursomarkets:
+      achat: 0.0
+      vente: "Selon tarification classique"
+      commentaire: "Sélection d'ETF éligibles PEA avec 0 € de courtage à l'achat"
+
+
+particularite:
+  boursomarkets_pea:
+    commentaire: "Large sélection d'ETF à 0 € de courtage à l'achat (partenariat principal avec iShares BlackRock) - mais minimum 200 € sur ETF (depuis avril 2026)"
+    nombre_approximatif: "Plusieurs centaines d'ETF éligibles PEA"
+    partenaires_principaux:
+      - "iShares (BlackRock)"
+      - "Amundi (certains ETF)"
+    exemples_populaires:  # Les plus utilisés en PEA via Boursomarkets
+      - name: "iShares MSCI World Swap PEA"
+        isin: "IE0002XZSHO1"
+        indice: "MSCI World"
+        categorie: "Monde développé"
+      - name: "Amundi PEA MSCI World"
+        isin: "FR001400U5Q4"
+        indice: "MSCI World"
+        categorie: "Monde développé"
+      - name: "Amundi PEA S&P 500"
+        isin: "FR0011871128"
+        indice: "S&P 500"
+        categorie: "États-Unis"
+      - name: "Amundi PEA Nasdaq-100"
+        isin: "FR0011871110"
+        indice: "Nasdaq-100"
+        categorie: "Technologie US"
+      - name: "Amundi CAC 40"
+        isin: "FR0007085976"
+        indice: "CAC 40"
+        categorie: "France"
+      - name: "iShares STOXX Europe 600"
+        isin: "Variés (plusieurs)"
+        indice: "STOXX Europe 600"
+        categorie: "Europe"
+    limite: "Frais de vente selon l'offre de courtage choisie"
+
+
+avantages:
+  - "Large choix d'ETF à 0 € à l'achat via Boursomarkets"
+  - "Aucuns frais fixes"
+  - "Très bon pour les investisseurs passifs (DCA)"
+  - "Remboursement frais de transfert fréquent"
+
+
+web_data:
+  boursobank: "https://www.boursobank.com/bourse/pea-plan-epargne-actions"
+  brochure_tarifaire: "https://www.boursorama.com/content/brochure_tarifaire/boursorama_bt.pdf"
+
+

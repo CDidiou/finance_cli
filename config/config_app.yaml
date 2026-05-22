@@ -1,0 +1,37 @@
+# Configuration de finance-cli
+
+app_name: finance-cli
+
+logging:
+  enabled: true
+  level: INFO # DEBUG - INFO - WARNING - ERROR - CRITICAL
+  format: standard # simple - standard - detailed
+
+data:
+  users:
+    folder: external-data/users
+  contracts:
+    folder: data/contracts
+  assets:
+    folder: data/assets
+
+  tx-data_format: excel #excel - sql
+  excel:
+    data_dir: R:/Finance
+    output_dir: output
+    sheet_name: Data
+    date_format: '%Y-%m-%d'
+    include_header: true
+    include_index: false
+    freeze_header: true
+    max_col_width: 40
+  sql:
+    dialect: postgresql
+    host: localhost
+    port: 5432
+    database: ''
+    user: ''
+    schema_name: public
+    table: data
+    if_exists: append
+    batch_size: 1000

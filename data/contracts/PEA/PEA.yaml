@@ -1,0 +1,76 @@
+contract: "Plan Epargne Actions (PEA)"
+type: "PEA Classique"
+plafond:
+  montant_eur: 150000
+  commentaire: "Hors capitalisation des dividendes et plus-values"
+
+regles_generales:
+  eligible:
+    - "Actions d'entreprises ayant leur siège social dans l'Union Européenne ou l'EEE"
+    - "Actions et ETF respectant la règle des 75% UE/EEE"
+    - "ETF synthétiques (swap) éligibles PEA"
+  non_eligible:
+    - "Actions américaines, suisses, britanniques (hors EEE)"
+    - "Obligations"
+    - "SCPI / SCI non éligibles"
+    - "Crypto-actifs"
+    - "Fonds obligataires et monétaires purs"
+  exception_swap_ucits:
+    commentaire: "Possibilité d'avoir une exposition indirecte via des ETF à réplication synthétique (swap)"
+    regle: "L'ETF doit détenir au moins 75% d'actions de sociétés ayant leur siège dans l'UE/EEE"
+    exemples:
+      - name: "iShares MSCI World Swap PEA"
+        isin: "IE0002XZSHO1"
+        exposition: "≈70% USA + Europe + Japon etc."
+      - name: "Amundi PEA MSCI World"
+        isin: "FR001400U5Q4"
+        exposition: "Monde développé"
+      - name: "iShares S&P 500 Swap PEA"
+        isin: "IE000DQLYVB9"
+        exposition: "États-Unis (S&P 500)"
+      - name: "Amundi PEA Nasdaq-100"
+        isin: "FR0011871110"
+        exposition: "Technologie US"
+    risque: "Risque de contrepartie sur le swap (limité à 10% par UCITS)"
+    avantage: "Meilleure diversification mondiale tout en restant dans le PEA"
+
+
+  duree_fiscale: "5 ans pour une exonération totale d'IR + PS"
+  retrait_avant_5_ans: "Clôture du PEA + imposition des gains"
+  retrait_apres_5_ans: "Exonération d'impôt sur le revenu mais pas des prélèvements sociaux"
+
+fiscalite:
+  apres_5_ans:
+    impot_revenu: 0
+    prelevements_sociaux: 18.6
+    taux_global: 18.6
+    commentaire: "Exonération totale d'IR, seuls les PS restent dus (taux 2026)"
+  avant_5_ans:
+    taux_global: 31.4
+    detail: "12.8% IR + 18.6% PS (clôture automatique du PEA)"
+  succession: "Très avantageux (hors droits de succession sous conditions)"
+  remarque: "Les gains non retirés (qui restent dans le PEA) ne sont jamais soumis aux PS ni à l'IR"  
+
+stock_exchanges:
+  - "Euronext Paris"
+  - "Euronext Amsterdam"
+  - "Euronext Bruxelles"
+  - "Euronext Lisbonne"
+
+infos:
+  creation: 1992
+  gestion_possible:
+    - "Gestion libre"
+    - "Gestion pilotée / Profils"
+  transfert: "Possible d'un broker à un autre (frais variables)"
+
+brokers:
+  - "Boursorama"
+  - "Fortuneo"
+  - "BNP Paribas"
+  - "Société Générale"
+  - "Crédit Agricole"
+
+sources:
+  - "Service-Public.fr"
+  - "Loi de finances"

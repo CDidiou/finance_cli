@@ -1,0 +1,57 @@
+schema_version: 1.0
+last_update: 2026-05-14
+
+contract: "Livret de Développement Durable et Solidaire (LDDS)"
+type: "Livret réglementé"
+
+plafond:
+  montant_eur: 12000
+  commentaire: "Hors capitalisation des intérêts (les intérêts peuvent faire dépasser ce plafond)"
+
+taux_actuel:
+  taux_net: 1.50
+  date_debut: "2026-02-01"
+  commentaire: "Taux identique au Livret A (baisse depuis 1,70% au 2ème semestre 2025)"
+
+performances_historiques:  # Taux net annuel
+  2026: 1.50   # depuis février
+  2025: 
+    - periode: "01/08/2025 - 31/01/2026"
+      taux: 1.70
+    - periode: "01/02/2025 - 31/07/2025"
+      taux: 2.40
+  2024: 3.00
+  2023: 3.00
+  2022: 
+    - periode: "01/08 - 31/12"
+      taux: 2.00
+    - periode: "01/02 - 31/07"
+      taux: 1.00
+  2021: 0.50
+  2020: 0.50
+
+fiscalite:
+  imposition: "Exonéré d'impôt sur le revenu et de prélèvements sociaux"
+  commentaire: "Intérêts nets d'impôts"
+
+disponibilite: "Retraits et versements libres à tout moment"
+
+conditions_ouverture:
+  - "Personne physique majeure"
+  - "Résident fiscal en France"
+  - "Un seul LDDS par personne (2 par foyer fiscal)"
+  - "Compatible avec un Livret A"
+
+avantages:
+  - "Épargne 100% sécurisée et garantie par l'État"
+  - "Liquidité immédiate"
+  - "Financement de l'économie sociale et solidaire + transition écologique"
+  - "Complément idéal du Livret A"
+
+web_data:
+  service_public: "https://www.service-public.fr/particuliers/vosdroits/F2368"
+  taux_officiel: "Banque de France"
+
+sources:
+  - "Service-Public.fr"
+  - "Banque de France"

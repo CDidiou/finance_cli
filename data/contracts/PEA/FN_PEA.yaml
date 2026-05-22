@@ -1,0 +1,40 @@
+schema_version: 1.0
+last_update: 2026-05-14
+
+broker: "Fortuneo"
+contract_ref: "../PEA.yaml"
+link: "https://www.fortuneo.fr/bourse/plan-epargne-actions"
+
+
+frais:
+  droits_garde: 0
+  tenue_compte: 0
+  inactivite: 0
+  cloture: 85
+  transfert_sortant: "15 € par ligne (max 150 €)"
+  transfert_entrant: "Souvent remboursés (offres promotionnelles fréquentes)"
+
+  courtage:
+    plafond_legal: 0.5
+    profils:
+      - offre: "Starter (recommandée)"
+        conditions: "0 € le 1er ordre du mois ≤ 500 €, puis 0,35 % par ordre"
+        ideal_pour: "Investisseurs passifs et DCA mensuel"
+      - offre: "Progress"
+        conditions: "4,90 € jusqu'à 3 000 € puis 0,15 %"
+      - offre: "Trader Pro"
+        conditions: "9,50 € jusqu'à 10 000 € puis 0,10 %"
+
+particularite: 
+  offre_gratuite_etf:
+    commentaire: "1er ordre d'achat du mois remboursé sur une sélection d'ETF Amundi (800 € à 100 000 €) jusqu'au 31/05/2026"
+    type: "Free Trade Amundi"
+
+avantages:
+  - "Frais très bas sur petits ordres (idéal DCA)"
+  - "Aucuns frais de garde ni d'inactivité"
+  - "Offre Free Trade Amundi (1 ordre/mois remboursé)"
+  - "Transferts entrants souvent remboursés"
+  - "3 profils tarifaires adaptés à tous les profils"
+
+

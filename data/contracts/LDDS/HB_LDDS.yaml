@@ -1,0 +1,10 @@
+schema_version: 1.0
+last_update: 2026-05-14
+
+broker: "Hello Bank"
+contract_ref: "../LDDS.yaml"   # Référence au fichier générique
+link: "https://www.hellobank.fr/fr/offre/epargne/livret-developpement-durable-solidaire/"
+
+
+
+

@@ -1,0 +1,62 @@
+schema_version: v1.0
+asset_type: mutual_fund
+fund_category: opcvm
+legal_structure: sicav
+isin: LU0248173006
+name: Schroder Emerging Asia B Acc EUR
+management_company: Schroder
+creation_year: 2004
+benchmark: MSCI EM Asia
+currency: eur
+distribution: acc
+aum:
+  in_millions: 6488.45
+  currency: usd
+ter: 2.44
+hedging: 'No'
+pea_eligible: 'No'
+quote:
+  quote_always_one: 'No'
+  aggregator: yahoo
+  ticker: 0P00001SDZ.F
+web_data:
+  quantalys: https://www.quantalys.com/Fonds/58184
+  morning_star: https://global.morningstar.com/fr/investissements/fonds/0P00001SDZ/cours
+  yahoo:
+    link: https://finance.yahoo.com/quote/0P00001SDZ.F/
+    ticker: 0P00001SDZ.F
+  investing:
+    link: https://fr.investing.com/funds/siemerging-asia-b-eur-acc
+    ticker: 0P00001SDZ
+  boursorama: https://www.boursorama.com/bourse/opcvm/cours/MP-447090/
+py_finance:
+  asset_class:
+    cash: 0
+    fixed_income: 0
+    real_estate: 0
+    commodities: 0
+    equity: 100
+    alternate: 0
+  risk:
+    low_risk:
+      total: 0
+      savings_account: 0
+      fonds_euros: 0
+      monetary: 0
+    mid_risk:
+      total: 0
+      commodities: 0
+      gold: 0
+      real_estate: 0
+      fixed_income: 0
+      aristocrats: 0
+    high_risk:
+      total: 100
+      world: 0
+      usa: 0
+      em: 100
+      eu: 0
+      other_equity: 0
+      crypto: 0
+comments: ''
+
