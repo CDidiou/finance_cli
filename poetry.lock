@@ -1862,4 +1862,4 @@ repair = ["scikit-learn (>=1.0)", "scipy (>=1.6.3)"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.12"
-content-hash = "2830230522ba2dc484e86dfff72eb10b26a737d207865cab08e5879bb970b1ce"
+content-hash = "16f94c6f926f10acd7f60facf26192afa7df465fa1ebd0ba5d8266ab0630e2a7"

@@ -9,3 +9,10 @@ build/
 .ruff_cache/
 .pytest_cache/
 *.egg
+.coverage
+htmlcov/
+*.pyc
+data/
+external-data/
+resources/
+old/

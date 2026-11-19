@@ -95,23 +95,27 @@ Le fichier utilisateur référence les wallets détenus. Chaque fiche wallet ré
 
 Les fichiers de transactions sont organisés par année. Les fichiers de balances sont identifiés par leur date.
 
-Pour le détail du modèle de données YAML, des règles d’héritage et du format Excel, voir [info_project.md](info_project.md).
-
 ## 5. Architecture technique
 
 Les modèles métier sont regroupés dans `finance_cli/models/` :
 
 ```text
 finance_cli/
+  adapters/
+    web/
+    yaml/
+  bootstrap/
+  config/
   models/
     __init__.py
     account.py
     wallet.py
     transaction.py
     balance.py
-  readers/
-    transaction_excel_reader.py
-  common/
+  repositories/
+    asset_repository.py
+    scraped_data_repository.py
+  services/
     generic_functions.py
 ```
 

@@ -1,7 +1,7 @@
 # Configuration de finance-cli
 app:
   name: patrimonia
-  version: 1.0.0
+  version: 1.1.0
   base_dir: .
 
 logging:
