@@ -1,37 +1,138 @@
 # Configuration de finance-cli
-
-app_name: finance-cli
+app:
+  name: patrimonia
+  version: 1.0.0
+  base_dir: .
 
 logging:
-  enabled: true
+  enabled: true # true - false
   level: INFO # DEBUG - INFO - WARNING - ERROR - CRITICAL
   format: standard # simple - standard - detailed
+  output: console # console - file
+  file_path: null # Path to log file if output is 'file' (defaults to 'logs/app.log' if null)
 
 data:
-  users:
-    folder: external-data/users
-  contracts:
-    folder: data/contracts
-  assets:
-    folder: data/assets
+  common:
+    schemas: resources/schemas/common
+  catalog:
+    financial:
+      assets:    
+        format: yaml
+        filename: <ID_ASSET>.yaml
+        folder: data/assets
+        schemas: resources/schemas/assets
+        rules: resources/rules/assets
+      contracts:
+        format: yaml
+        filename: <ID_CONTRACT>.yaml
+        folder: data/contracts
+        schemas: resources/schemas/contracts
+        rules: resources/rules/contracts
 
-  tx-data_format: excel #excel - sql
-  excel:
-    data_dir: R:/Finance
-    output_dir: output
-    sheet_name: Data
-    date_format: '%Y-%m-%d'
-    include_header: true
-    include_index: false
-    freeze_header: true
-    max_col_width: 40
-  sql:
-    dialect: postgresql
-    host: localhost
-    port: 5432
-    database: ''
-    user: ''
-    schema_name: public
-    table: data
-    if_exists: append
-    batch_size: 1000
+    references:
+      economy:
+        format: yaml
+        filename: <REFERENCE>.yaml
+        folder: data/economy
+        schemas: resources/schemas/economy
+        rules: resources/rules/economy
+
+  external:
+    assets:
+      quotes:
+        format: yaml
+        filename: <YYYY>_<ID_ASSET>_quote.yaml
+        folder: external-data/assets/<CATEGORY_PATH>/<ID_ASSET>/quotes
+        schemas: resources/schemas/assets/scraped
+        rules: resources/rules/assets/scraped
+      factsheets:
+        source:
+          format: pdf
+          filename: <YYYY>-<MM>_<ID_ASSET>_factsheet.pdf
+          folder: external-data/assets/<CATEGORY_PATH>/<ID_ASSET>/factsheets  
+          schemas: null
+          rules: null      
+        extracted:
+          format: yaml
+          filename: <YYYY>-<MM>_<ID_ASSET>_factsheet.yaml
+          folder: external-data/assets/<CATEGORY_PATH>/<ID_ASSET>/factsheets
+          schemas: resources/schemas/assets/scraped
+          rules: resources/rules/assets/scraped
+      scraped_data:      
+        format: yaml
+        filename: <ID_ASSET>_scraping.yaml
+        folder: external-data/assets/<CATEGORY_PATH>/<ID_ASSET>/scraped_data
+        schemas: resources/schemas/assets/scraped
+        rules: resources/rules/assets/scraped
+
+  customer:
+    input:
+      users:
+        format: yaml
+        filename: <ID_USER>.yaml
+        folder: external-data/users
+        schemas: resources/schemas/users
+        rules: resources/rules/users
+      wallets:
+        balances:
+          format: excel
+          filename: <YYYY>-<MM>-<DD>_<ID_WALLET>_balance.xlsx
+          folder: external-data/users/<ID_USER>/input/<ID_WALLET>/balances
+          schemas: resources/schemas/wallets
+          rules: resources/rules/wallets              
+        transactions:
+          format: excel
+          filename: <YYYY>_<ID_WALLET>_tx.xlsx
+          folder: external-data/users/<ID_USER>/input/<ID_WALLET>/transactions
+          schemas: resources/schemas/wallets
+          rules: resources/rules/wallets
+
+    calculated:
+      users:
+        balances:
+          format: yaml
+          filename: <YYYY>_<ID_USER>_balance.yaml
+          folder: external-data/users/<ID_USER>/calculated/global
+          schemas: resources/schemas/users/calculated
+          rules: resources/rules/users/calculated        
+        evolution:
+          format: yaml
+          filename: <ID_USER>_evolution.yaml
+          folder: external-data/users/<ID_USER>/calculated/global
+          schemas: resources/schemas/users/calculated
+          rules: resources/rules/users/calculated        
+        dashboards:
+          format: html
+          filename: <ID_USER>_dashboard.html  
+          folder: external-data/users/<ID_USER>/calculated/global
+          schemas: resources/schemas/users/calculated
+          rules: resources/rules/users/calculated
+          templates: resources/templates/users/calculated
+          styles: resources/styles/users/calculated
+      wallets:
+        transactions_enriched:
+          format: yaml
+          filename: <YYYY>_<ID_WALLET>_tx_enriched.yaml
+          folder: external-data/users/<ID_USER>/calculated/<ID_WALLET>/transactions
+          schemas: resources/schemas/wallets/calculated
+          rules: resources/rules/wallets/calculated      
+        balances:
+          format: yaml
+          filename: <YYYY>-<MM>-<DD>_<ID_WALLET>_balance.yaml
+          folder: external-data/users/<ID_USER>/calculated/<ID_WALLET>/balances
+          schemas: resources/schemas/wallets/calculated
+          rules: resources/rules/wallets/calculated        
+        evolution:
+          format: yaml
+          filename: <ID_WALLET>_evolution.yaml
+          folder: external-data/users/<ID_USER>/calculated/<ID_WALLET>
+          schemas: resources/schemas/wallets/calculated
+          rules: resources/rules/wallets/calculated        
+        dashboards:
+          format: html
+          filename: <ID_WALLET>_dashboard.html
+          folder: external-data/users/<ID_USER>/calculated/<ID_WALLET>
+          schemas: resources/schemas/wallets/calculated
+          rules: resources/rules/wallets/calculated
+          templates: resources/templates/wallets/calculated
+          styles: resources/styles/wallets/calculated         

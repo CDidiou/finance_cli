@@ -1,0 +1,50 @@
+[tool.poetry]
+name = "finance-cli"
+version = "0.1.0"
+description = "A CLI tool for personal finance analysis"
+authors = ["CoinDidiou <you@example.com>"]
+readme = "README.md"
+# Poetry inclut automatiquement les fichiers non-.py dans le package,
+# mais il faut un __init__.py ou un marqueur explicite si le dossier
+# ne contient que des .json
+packages = [{include = "finance_cli", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+click = "^8.1"
+pyyaml = "^6.0"
+openpyxl = "^3.1.5"
+pypdf = "^5.0.0"
+yfinance = "^1.7.0"
+curl_cffi = "^0.17.0"
+jsonschema = "^4.23"
+referencing = "^0.35"
+python-dotenv = "^1.2.4"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0"
+ruff = ">=0.5.3"
+mypy = "^1.10"
+types-PyYAML = "^6.0"
+types-openpyxl = "^3.1.5.20261017"
+
+[tool.poetry.scripts]
+finance-cli = "finance_cli.main:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
