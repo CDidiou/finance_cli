@@ -5,7 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
-from finance_cli.common import inheritance, yaml_io
+from finance_cli.adapters.yaml import inheritance_loader, yaml_io
 from finance_cli.config import paths_resolver
 from old.src.finance_cli.models.user import User
 
@@ -88,7 +88,9 @@ class UserCatalog:
 
     def _load(self, implementation_file: Path) -> dict[str, Any]:
         """Load cumulative asset data through its YAML ``extends`` chain."""
-        return inheritance.load_data_with_extends(implementation_file, root=self.root)
+        return inheritance_loader.load_data_with_extends(
+            implementation_file, root=self.root
+        )
 
     def _is_within_root(self, path: Path) -> bool:
         try:

@@ -8,11 +8,11 @@ from typing import Any, Literal
 
 from pydantic import ValidationError
 
-from finance_cli.adapters.web.yahoo_finance import YahooFinanceAdapter
 from finance_cli.common import scraped_to_catalog
 from finance_cli.exceptions.scraped_data import ScrapedDataContentError
 from finance_cli.models.asset import Asset
 from finance_cli.models.scraped_asset import AggregatedScrapedAsset
+from finance_cli.ports.market_data_provider import MarketDataProvider
 from finance_cli.repositories.asset_repository import AssetRepository
 from finance_cli.repositories.scraped_data_repository import ScrapedDataRepository
 from finance_cli.validation import catalog_validation_error
@@ -36,11 +36,11 @@ class AssetService:
         self,
         asset_repository: AssetRepository,
         scraped_data_repository: ScrapedDataRepository,
-        yahoo_adapter: YahooFinanceAdapter,
+        market_data_providers: dict[str, MarketDataProvider],
     ) -> None:
         self._asset_repository = asset_repository
         self._scraped_data_repository = scraped_data_repository
-        self._yahoo_adapter = yahoo_adapter
+        self._market_data_providers = market_data_providers
 
     # --- API PUBLIQUE ---
 
@@ -69,10 +69,7 @@ class AssetService:
         if aggregator is None:
             raise ValueError(f"Aucun agrégateur défini pour l'actif {asset_id!r}.")
 
-        if aggregator.provider != "yahoo_finance":
-            raise ValueError(
-                f"Provider {aggregator.provider!r} non supporté pour fetch market-data."
-            )
+        market_data_provider = self._get_market_data_provider(aggregator.provider)
 
         if not aggregator.symbol:
             raise ValueError(f"Aucun symbole de prix défini pour l'actif {asset_id!r}.")
@@ -84,12 +81,12 @@ class AssetService:
             aggregator.symbol,
         )
 
-        scraped, raw = self._yahoo_adapter.fetch(
+        scraped, raw = market_data_provider.fetch(
             asset_id=asset.id,
             symbol=aggregator.symbol,
         )
 
-        payload = self._yahoo_adapter.to_dict(scraped, raw=raw)
+        payload = market_data_provider.to_dict(scraped, raw=raw)
 
         category_path = self._asset_repository.get_category_path(asset.id)
 
@@ -156,3 +153,17 @@ class AssetService:
         self._asset_repository.save(updated_asset)
 
         return self._asset_repository.get_by_id(asset_id)
+
+    # --- HELPERS INTERNES ---
+    def _get_market_data_provider(
+        self,
+        provider_name: str,
+    ) -> MarketDataProvider:
+
+        try:
+            return self._market_data_providers[provider_name]
+
+        except KeyError:
+            raise ValueError(
+                f"Market data provider {provider_name!r} non supporté."
+            ) from None

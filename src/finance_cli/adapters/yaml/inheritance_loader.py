@@ -10,7 +10,8 @@ from collections.abc import Mapping, Sequence
 from pathlib import Path
 from typing import Any
 
-from finance_cli.common import merge, yaml_io
+from finance_cli.adapters.yaml import yaml_io
+from finance_cli.common import merge
 
 logger = logging.getLogger(__name__)
 

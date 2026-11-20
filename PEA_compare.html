@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparaison PEA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        header h1 {
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .generic-section {
+            background: white;
+            border-left: 5px solid #667eea;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .generic-section h2 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .brokers-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+        
+        .broker-section {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .broker-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .broker-section h3 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            margin: 0;
+        }
+        
+        .broker-section h3 a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .broker-section h3 a:hover {
+            text-decoration: underline;
+        }
+        
+        .broker-content {
+            padding: 1.5rem;
+        }
+        
+        .nested-item {
+            margin: 1rem 0;
+            padding: 1rem;
+            background-color: #fafafa;
+            border-left: 3px solid #ddd;
+            border-radius: 2px;
+        }
+        
+        .item {
+            margin: 0.75rem 0;
+            padding: 0.5rem;
+        }
+        
+        .item strong {
+            color: #667eea;
+            min-width: 150px;
+            display: inline-block;
+        }
+        
+        ul {
+            list-style-position: inside;
+            padding-left: 1rem;
+        }
+        
+        li {
+            margin: 0.5rem 0;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📊 Comparaison PEA</h1>
+        <p>Analyse des offres par broker</p>
+    </header>
+    
+    <div class="container">
+        <div class="generic-section">
+            <h2>ℹ️ Informations Génériques</h2>
+            <div class='item'><strong>contract:</strong> Plan Epargne Actions (PEA)</div>
+<div class='item'><strong>type:</strong> PEA Classique</div>
+<div class='nested-item'>
+  <strong>plafond:</strong>
+    <div class='item'><strong>montant_eur:</strong> 150000</div>
+    <div class='item'><strong>commentaire:</strong> Hors capitalisation des dividendes et plus-values</div>
+</div>
+<div class='nested-item'>
+  <strong>regles_generales:</strong>
+    <div class='nested-item'>
+      <strong>eligible:</strong>
+      <ul>
+        <li>Actions d&#39;entreprises ayant leur siège social dans l&#39;Union Européenne ou l&#39;EEE</li>
+        <li>ETF et OPCVM éligibles PEA</li>
+      </ul>
+    </div>
+    <div class='nested-item'>
+      <strong>non_eligible:</strong>
+      <ul>
+        <li>Actions américaines, suisses, britanniques (hors EEE)</li>
+        <li>Obligations</li>
+        <li>SCPI / SCI non éligibles</li>
+      </ul>
+    </div>
+    <div class='item'><strong>duree_fiscale:</strong> 8 ans pour une exonération totale d&#39;IR + PS</div>
+    <div class='item'><strong>retrait_avant_5_ans:</strong> Clôture du PEA + imposition des gains</div>
+    <div class='item'><strong>retrait_apres_5_ans:</strong> Exonération d&#39;impôt sur le revenu et prélèvements sociaux</div>
+</div>
+<div class='nested-item'>
+  <strong>fiscalite:</strong>
+    <div class='item'><strong>apres_5_ans:</strong> Exonération totale d&#39;IR + PS sur les plus-values et dividendes</div>
+    <div class='item'><strong>avant_5_ans:</strong> 12,8% IR + 17,2% PS + possible clôture</div>
+    <div class='item'><strong>succession:</strong> Très avantageux (hors droits de succession sous conditions)</div>
+</div>
+<div class='nested-item'>
+  <strong>stock_exchanges:</strong>
+  <ul>
+    <li>Euronext Paris</li>
+    <li>Euronext Amsterdam</li>
+    <li>Euronext Bruxelles</li>
+    <li>Euronext Lisbonne</li>
+  </ul>
+</div>
+<div class='nested-item'>
+  <strong>infos:</strong>
+    <div class='item'><strong>creation:</strong> 1992</div>
+    <div class='nested-item'>
+      <strong>gestion_possible:</strong>
+      <ul>
+        <li>Gestion libre</li>
+        <li>Gestion pilotée / Profils</li>
+      </ul>
+    </div>
+    <div class='item'><strong>architecture_ouverte:</strong> True</div>
+    <div class='item'><strong>transfert:</strong> Possible d&#39;un broker à un autre (frais variables)</div>
+</div>
+<div class='nested-item'>
+  <strong>sources:</strong>
+  <ul>
+    <li>Service-Public.fr</li>
+    <li>Loi de finances</li>
+  </ul>
+</div>
+
+        </div>
+        
+        <h2 style="color: #333; margin-top: 2rem; margin-bottom: 1.5rem;">🏦 Offres Broker</h2>
+        <div class="brokers-container">
+            
+        <div class="broker-section">
+          <h3><a href="https://www.boursobank.com/bourse/pea-plan-epargne-actions" target="_blank">BoursoBank</a></h3>
+          <div class="broker-content">
+            <div class='item'><strong>schema_version:</strong> 1.0</div>
+<div class='item'><strong>last_update:</strong> 2026-05-14</div>
+<div class='item'><strong>broker:</strong> BoursoBank</div>
+<div class='item'><strong>contract_ref:</strong> ../pea.yaml</div>
+<div class='item'><strong>link:</strong> https://www.boursobank.com/bourse/pea-plan-epargne-actions</div>
+<div class='nested-item'>
+  <strong>avantages:</strong>
+  <ul>
+    <li>Large choix d&#39;ETF à 0 € à l&#39;achat via Boursomarkets</li>
+    <li>Aucuns frais fixes</li>
+    <li>Très bon pour les investisseurs passifs (DCA)</li>
+  </ul>
+</div>
+<div class='item'><strong>promotions:</strong> Remboursement frais de transfert fréquent</div>
+<div class='nested-item'>
+  <strong>frais:</strong>
+    <div class='item'><strong>droits_garde:</strong> 0</div>
+    <div class='item'><strong>tenue_compte:</strong> 0</div>
+    <div class='item'><strong>inactivite:</strong> 0</div>
+    <div class='item'><strong>cloture:</strong> 0</div>
+    <div class='item'><strong>transfert_sortant:</strong> Selon barème (souvent remboursés les 2 premiers)</div>
+    <div class='nested-item'>
+      <strong>courtage:</strong>
+        <div class='item'><strong>plafond_legal:</strong> 0.5</div>
+        <div class='nested-item'>
+          <strong>offre_decouverte:</strong>
+            <div class='item'><strong>petit_ordre:</strong> 1,99 € (&lt; 500 €) puis 0,60 % (plafonné à 0,5 % sur PEA)</div>
+            <div class='item'><strong>commentaire:</strong> Offre par défaut recommandée pour la plupart des investisseurs</div>
+        </div>
+        <div class='nested-item'>
+          <strong>boursomarkets:</strong>
+            <div class='item'><strong>achat:</strong> 0.0</div>
+            <div class='item'><strong>vente:</strong> Selon tarification classique</div>
+            <div class='item'><strong>commentaire:</strong> Sélection d&#39;ETF éligibles PEA avec 0 € de courtage à l&#39;achat</div>
+        </div>
+    </div>
+</div>
+<div class='nested-item'>
+  <strong>frais_courtage:</strong>
+  <ul>
+    <li>
+      <div class='item'><strong>offre:</strong> Découverte (recommandée)</div>
+      <div class='item'><strong>conditions:</strong> 1,99 € jusqu&#39;à 500 € puis 0,60 % (plafonné à 0,5 % sur PEA)</div>
+    </li>
+    <li>
+      <div class='item'><strong>offre:</strong> Trader</div>
+      <div class='item'><strong>conditions:</strong> 16,65 € jusqu&#39;à 7 750 € puis 0,22 % (plafonné à 0,5 %)</div>
+    </li>
+    <li>
+      <div class='item'><strong>offre:</strong> Ultimate Trader</div>
+      <div class='item'><strong>conditions:</strong> 9,90 € jusqu&#39;à 10 000 € puis 0,12 % (plafonné à 0,5 %)</div>
+    </li>
+  </ul>
+</div>
+<div class='nested-item'>
+  <strong>boursomarkets_pea:</strong>
+    <div class='item'><strong>commentaire:</strong> Large sélection d&#39;ETF à 0 € de courtage à l&#39;achat (partenariat principal avec iShares BlackRock)</div>
+    <div class='item'><strong>nombre_approximatif:</strong> Plusieurs centaines d&#39;ETF éligibles PEA</div>
+    <div class='nested-item'>
+      <strong>partenaires_principaux:</strong>
+      <ul>
+        <li>iShares (BlackRock)</li>
+        <li>Amundi (certains ETF)</li>
+      </ul>
+    </div>
+    <div class='nested-item'>
+      <strong>exemples_populaires:</strong>
+      <ul>
+        <li>
+          <div class='item'><strong>name:</strong> iShares MSCI World Swap PEA</div>
+          <div class='item'><strong>isin:</strong> IE0002XZSHO1</div>
+          <div class='item'><strong>indice:</strong> MSCI World</div>
+          <div class='item'><strong>categorie:</strong> Monde développé</div>
+        </li>
+        <li>
+          <div class='item'><strong>name:</strong> Amundi PEA MSCI World</div>
+          <div class='item'><strong>isin:</strong> FR001400U5Q4</div>
+          <div class='item'><strong>indice:</strong> MSCI World</div>
+          <div class='item'><strong>categorie:</strong> Monde développé</div>
+        </li>
+        <li>
+          <div class='item'><strong>name:</strong> Amundi PEA S&amp;P 500</div>
+          <div class='item'><strong>isin:</strong> FR0011871128</div>
+          <div class='item'><strong>indice:</strong> S&amp;P 500</div>
+          <div class='item'><strong>categorie:</strong> États-Unis</div>
+        </li>
+        <li>
+          <div class='item'><strong>name:</strong> Amundi PEA Nasdaq-100</div>
+          <div class='item'><strong>isin:</strong> FR0011871110</div>
+          <div class='item'><strong>indice:</strong> Nasdaq-100</div>
+          <div class='item'><strong>categorie:</strong> Technologie US</div>
+        </li>
+        <li>
+          <div class='item'><strong>name:</strong> Amundi CAC 40</div>
+          <div class='item'><strong>isin:</strong> FR0007085976</div>
+          <div class='item'><strong>indice:</strong> CAC 40</div>
+          <div class='item'><strong>categorie:</strong> France</div>
+        </li>
+        <li>
+          <div class='item'><strong>name:</strong> iShares STOXX Europe 600</div>
+          <div class='item'><strong>isin:</strong> Variés (plusieurs)</div>
+          <div class='item'><strong>indice:</strong> STOXX Europe 600</div>
+          <div class='item'><strong>categorie:</strong> Europe</div>
+        </li>
+      </ul>
+    </div>
+    <div class='nested-item'>
+      <strong>avantages:</strong>
+      <ul>
+        <li>0 € à l&#39;achat sur la sélection Boursomarkets</li>
+        <li>Idéal pour l&#39;investissement progressif (DCA)</li>
+        <li>Filtrable par éligibilité PEA directement sur la plateforme</li>
+      </ul>
+    </div>
+    <div class='item'><strong>limite:</strong> Frais de vente selon l&#39;offre de courtage choisie</div>
+</div>
+<div class='nested-item'>
+  <strong>list_boursomarkets:</strong>
+    <div class='item'><strong>commentaire:</strong> Plusieurs milliers d&#39;ETF et produits avec 0 € de courtage à l&#39;achat (sélection éligible PEA)</div>
+    <div class='nested-item'>
+      <strong>avantages:</strong>
+      <ul>
+        <li>0 € à l&#39;achat sur une large sélection d&#39;ETF</li>
+        <li>Idéal pour l&#39;investissement progressif</li>
+      </ul>
+    </div>
+    <div class='item'><strong>limite:</strong> Frais de vente selon la tarification choisie</div>
+</div>
+<div class='nested-item'>
+  <strong>infos:</strong>
+    <div class='item'><strong>eligible:</strong> Actions et ETF d&#39;entreprises dont le siège est dans l&#39;UE ou l&#39;EEE</div>
+    <div class='item'><strong>minimum_ordre:</strong> 200 € sur ETF (depuis avril 2026)</div>
+    <div class='nested-item'>
+      <strong>gestion:</strong>
+      <ul>
+        <li>Gestion libre</li>
+        <li>PEA profilé (gestion pilotée)</li>
+      </ul>
+    </div>
+</div>
+<div class='nested-item'>
+  <strong>web_data:</strong>
+    <div class='item'><strong>boursobank:</strong> https://www.boursobank.com/bourse/pea-plan-epargne-actions</div>
+    <div class='item'><strong>brochure_tarifaire:</strong> https://www.boursorama.com/content/brochure_tarifaire/boursorama_bt.pdf</div>
+</div>
+<div class='nested-item'>
+  <strong>sources:</strong>
+  <ul>
+    <li>Site officiel BoursoBank (2026)</li>
+    <li>Brochure tarifaire BoursoBank 2026</li>
+  </ul>
+</div>
+
+          </div>
+        </div>
+        
+        <div class="broker-section">
+          <h3><a href="https://www.fortuneo.fr/bourse/plan-epargne-actions" target="_blank">Fortuneo</a></h3>
+          <div class="broker-content">
+            <div class='item'><strong>schema_version:</strong> 1.0</div>
+<div class='item'><strong>last_update:</strong> 2026-05-14</div>
+<div class='item'><strong>broker:</strong> Fortuneo</div>
+<div class='item'><strong>contract_ref:</strong> ../pea.yaml</div>
+<div class='item'><strong>link:</strong> https://www.fortuneo.fr/bourse/plan-epargne-actions</div>
+<div class='nested-item'>
+  <strong>frais:</strong>
+    <div class='item'><strong>droits_garde:</strong> 0</div>
+    <div class='item'><strong>tenue_compte:</strong> 0</div>
+    <div class='item'><strong>inactivite:</strong> 0</div>
+    <div class='item'><strong>cloture:</strong> 85</div>
+    <div class='item'><strong>transfert_sortant:</strong> 15 € par ligne (max 150 €)</div>
+    <div class='item'><strong>transfert_entrant:</strong> Souvent remboursés (offres promotionnelles fréquentes)</div>
+    <div class='nested-item'>
+      <strong>courtage:</strong>
+        <div class='item'><strong>plafond_legal:</strong> 0.5</div>
+        <div class='nested-item'>
+          <strong>offre_starter:</strong>
+            <div class='item'><strong>petit_ordre:</strong> 0 € (1er ordre du mois ≤ 500 €) puis 0,35 %</div>
+            <div class='item'><strong>commentaire:</strong> Très avantageux pour les petits versements / DCA</div>
+        </div>
+        <div class='nested-item'>
+          <strong>offre_progress:</strong>
+            <div class='item'><strong>conditions:</strong> 4,90 € jusqu&#39;à 3 000 € puis 0,15 %</div>
+        </div>
+        <div class='nested-item'>
+          <strong>offre_trader_pro:</strong>
+            <div class='item'><strong>conditions:</strong> 9,50 € jusqu&#39;à 10 000 € puis 0,10 %</div>
+        </div>
+    </div>
+</div>
+<div class='nested-item'>
+  <strong>frais_courtage:</strong>
+  <ul>
+    <li>
+      <div class='item'><strong>offre:</strong> Starter (recommandée)</div>
+      <div class='item'><strong>conditions:</strong> 0 € le 1er ordre du mois ≤ 500 €, puis 0,35 % par ordre</div>
+      <div class='item'><strong>ideal_pour:</strong> Investisseurs passifs et DCA mensuel</div>
+    </li>
+    <li>
+      <div class='item'><strong>offre:</strong> Progress</div>
+      <div class='item'><strong>conditions:</strong> 4,90 € jusqu&#39;à 3 000 € puis 0,15 %</div>
+    </li>
+    <li>
+      <div class='item'><strong>offre:</strong> Trader Pro</div>
+      <div class='item'><strong>conditions:</strong> 9,50 € jusqu&#39;à 10 000 € puis 0,10 %</div>
+    </li>
+  </ul>
+</div>
+<div class='nested-item'>
+  <strong>offre_gratuite_etf:</strong>
+    <div class='item'><strong>commentaire:</strong> 1er ordre d&#39;achat du mois remboursé sur une sélection d&#39;ETF Amundi (800 € à 100 000 €) jusqu&#39;au 31/05/2026</div>
+    <div class='item'><strong>type:</strong> Free Trade Amundi</div>
+</div>
+<div class='nested-item'>
+  <strong>avantages:</strong>
+  <ul>
+    <li>Frais très bas sur petits ordres (idéal DCA)</li>
+    <li>Aucuns frais de garde ni d&#39;inactivité</li>
+    <li>Offre Free Trade Amundi (1 ordre/mois remboursé)</li>
+    <li>Transferts entrants souvent remboursés</li>
+    <li>3 profils tarifaires adaptés à tous les profils</li>
+  </ul>
+</div>
+
+          </div>
+        </div>
+        
+        </div>
+    </div>
+    
+    <footer>
+        <p>Generated by finance-cli | PEA Comparison Report</p>
+    </footer>
+</body>
+</html>

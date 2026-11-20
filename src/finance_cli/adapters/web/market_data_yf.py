@@ -3,20 +3,22 @@ from __future__ import annotations
 
 from datetime import date
 from typing import Any
-import requests
 
+import requests
 import yfinance as yf
 import yfinance.exceptions as yf_exceptions
 
-from finance_cli.models import scraped_asset
 from finance_cli.exceptions.providers import (
     ProviderConnectionError,
     ProviderDataError,
     ProviderSymbolError,
 )
+from finance_cli.models import scraped_asset
+
+# structural subtyping sur ports/market_data_provider.py
 
 
-class YahooFinanceAdapter:
+class MarketDataYahooFinance:
     """Récupère des données de marché via yfinance et les structure
     conformément au schéma external.assets.scraped_data.
     """

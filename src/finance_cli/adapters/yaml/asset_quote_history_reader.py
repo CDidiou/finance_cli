@@ -5,8 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
-from finance_cli.common import yaml_io
-import yaml
+from finance_cli.adapters.yaml import yaml_io
 
 
 class QuoteHistoryReadError(Exception):

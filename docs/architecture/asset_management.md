@@ -247,11 +247,11 @@ Data collected from external providers is stored separately from the reference c
 
 This separation allows external information to be collected, validated and updated without directly modifying internal asset definitions.
 
-#### YahooFinanceAdapter
+#### MarketDataYahooFinance
 
-Location: `adapters/web/yahoo_finance_adapter.py`
+Location: `adapters/web/market_data_yf.py`
 
-`YahooFinanceAdapter` encapsulates communication with Yahoo Finance and converts provider responses into application data.
+`MarketDataYahooFinance` encapsulates communication with Yahoo Finance and converts provider responses into application data.
 
 Its responsibilities include:
 
@@ -392,7 +392,7 @@ These may include:
 - The corresponding rule loaders and validators, where required.
 - `AssetRepository`.
 - `ScrapedDataRepository`.
-- `YahooFinanceAdapter`.
+- `MarketDataYahooFinance`.
 - `AssetService`, instantiated with its dependencies.
 
 The application service does not construct its own repositories, validators or adapters.
@@ -534,7 +534,7 @@ AssetService.fetch_market_data()
  |      +--> Read provider configuration
  |      +--> Determine category-relative path
  |
- +--> YahooFinanceAdapter
+ +--> MarketDataYahooFinance
  |      |
  |      +--> Collect data from Yahoo Finance
  |      +--> Extract and aggregate provider data
@@ -551,7 +551,7 @@ The workflow proceeds as follows:
 
 1. `AssetService` loads the asset through `AssetRepository`.
 2. It retrieves the information required for collection, including the provider and symbol.
-3. `YahooFinanceAdapter` queries Yahoo Finance and converts the response into the expected data representation.
+3. `MarketDataYahooFinance` queries Yahoo Finance and converts the response into the expected data representation.
 4. `ScrapedDataRepository` validates the collected data.
 5. The repository compares the reference date with the date of the existing data.
 6. If replacement conditions are satisfied, it writes the new file.
@@ -627,7 +627,7 @@ The transformation preserves internal data that is not affected by the update. I
 | `AssetService` | Orchestration of asset-related use cases |
 | `AssetRepository` | Catalogue access, validation and persistence |
 | `ScrapedDataRepository` | External data access, validation and persistence |
-| `YahooFinanceAdapter` | Communication with Yahoo Finance and response conversion |
+| `MarketDataYahooFinance` | Communication with Yahoo Finance and response conversion |
 | `scraped_to_catalog` | Transformation of external data into catalogue data |
 | `SchemaLoader` | Schema loading and registry construction |
 | `SchemaValidator` | Structural validation |
@@ -671,7 +671,7 @@ flowchart TD
 
     AR[AssetRepository]
     SDR[ScrapedDataRepository]
-    YA[YahooFinanceAdapter]
+    YA[MarketDataYahooFinance]
     STC[scraped_to_catalog]
 
     CP[ConfigPathResolver]
@@ -725,7 +725,7 @@ The diagram illustrates the main relationships between components. It is a logic
 1. `AssetService` orchestrates components but does not implement technical persistence or provider communication.
 2. `AssetRepository` is responsible for catalogue access and coordinates validation of `Asset` data.
 3. `ScrapedDataRepository` is responsible for reading, validating and writing external data.
-4. `YahooFinanceAdapter` encapsulates communication with Yahoo Finance and conversion of provider responses.
+4. `MarketDataYahooFinance` encapsulates communication with Yahoo Finance and conversion of provider responses.
 5. `ConfigPathResolver` is a cross-cutting component used by repositories to resolve configured paths.
 6. `SchemaLoader` uses `ConfigPathResolver` to locate schemas.
 7. `SchemaValidator` uses the schemas provided by `SchemaLoader`.

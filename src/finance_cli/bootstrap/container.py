@@ -1,14 +1,16 @@
 """Composition des dépendances de l'application."""
 
+from collections.abc import Mapping
 from pathlib import Path
 
-from finance_cli.adapters.web.yahoo_finance import YahooFinanceAdapter
+from finance_cli.adapters.web.market_data_yf import MarketDataYahooFinance
 from finance_cli.bootstrap.services import Services
 from finance_cli.config.config_models import AppConfig
 from finance_cli.config.paths_resolver import ConfigPathResolver
 from finance_cli.exceptions.configuration import ConfigurationError
 from finance_cli.models.asset import Asset
 from finance_cli.models.scraped_asset import AggregatedScrapedAsset
+from finance_cli.ports.market_data_provider import MarketDataProvider
 from finance_cli.repositories.asset_repository import AssetRepository
 from finance_cli.repositories.catalog_repository import CatalogueRepository
 from finance_cli.repositories.external_asset_repository import ExternalAssetRepository
@@ -46,9 +48,15 @@ def build_services(config: AppConfig) -> Services:
     config_check_service = ConfigCheckService(config)
     list_service = build_list_service(path_resolver)
 
+    market_data_providers = {
+        "yahoo_finance": MarketDataYahooFinance(),
+        # "bloomberg": MarketDataBloomberg(),
+    }
+
     asset_service = build_asset_service(
         asset_repository=asset_repository,
         scraped_data_repository=scraped_asset_repository,
+        market_data_providers=market_data_providers,
     )
 
     asset_status_service = AssetStatusService(
@@ -95,14 +103,13 @@ def build_list_service(
 def build_asset_service(
     asset_repository: AssetRepository,
     scraped_data_repository: ScrapedDataRepository,
+    market_data_providers: Mapping[str, MarketDataProvider],
 ) -> AssetService:
-    """Construit AssetService avec toutes ses dépendances."""
-    yahoo_adapter = YahooFinanceAdapter()
 
     return AssetService(
         asset_repository=asset_repository,
         scraped_data_repository=scraped_data_repository,
-        yahoo_adapter=yahoo_adapter,
+        market_data_providers=market_data_providers,
     )
 
 
@@ -145,7 +152,8 @@ def build_scraped_asset_repository(
     scraped_resources = path_resolver.resolve_resources("external/assets/scraped_data")
     if scraped_resources.schemas is None:
         raise ConfigurationError(
-            "Le répertoire des schémas du catalogue des scraped actifs n'est pas configuré."
+            "Le répertoire des schémas du catalogue des scraped"
+            " actifs n'est pas configuré."
         )
 
     reference_validator = build_reference_validator(path_resolver)

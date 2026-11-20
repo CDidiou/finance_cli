@@ -4,7 +4,7 @@ import pytest
 import requests
 import yfinance.exceptions as yf_exceptions
 
-from finance_cli.adapters.web.yahoo_finance import YahooFinanceAdapter
+from finance_cli.adapters.web.market_data_yf import MarketDataYahooFinance
 from finance_cli.exceptions.providers import (
     ProviderConnectionError,
     ProviderDataError,
@@ -26,7 +26,7 @@ def test_fetch_equity_market_cap():
     with patch("finance_cli.adapters.web.yahoo_finance.yf.Ticker") as mock_ticker:
         mock_ticker.return_value.info = info
 
-        scraped, raw = YahooFinanceAdapter().fetch("US0378331005", "AAPL")
+        scraped, raw = MarketDataYahooFinance().fetch("US0378331005", "AAPL")
 
     indicative = scraped.market_data.indicative
 
@@ -51,7 +51,7 @@ def test_fetch_etf_aum():
     with patch("finance_cli.adapters.web.yahoo_finance.yf.Ticker") as mock_ticker:
         mock_ticker.return_value.info = info
 
-        scraped, _ = YahooFinanceAdapter().fetch("IE00B4L5Y983", "IWDA.AS")
+        scraped, _ = MarketDataYahooFinance().fetch("IE00B4L5Y983", "IWDA.AS")
 
     indicative = scraped.market_data.indicative
 
@@ -74,7 +74,7 @@ def test_fetch_currency_depends_on_quote_type():
     with patch("finance_cli.adapters.web.yahoo_finance.yf.Ticker") as mock_ticker:
         mock_ticker.return_value.info = equity_info
 
-        equity, _ = YahooFinanceAdapter().fetch("US0000000001", "TEST")
+        equity, _ = MarketDataYahooFinance().fetch("US0000000001", "TEST")
 
     assert equity.market_data.indicative.currency == "USD"
     assert equity.agg_info.fund_currency is None
@@ -88,7 +88,7 @@ def test_fetch_currency_depends_on_quote_type():
     with patch("finance_cli.adapters.web.yahoo_finance.yf.Ticker") as mock_ticker:
         mock_ticker.return_value.info = etf_info
 
-        etf, _ = YahooFinanceAdapter().fetch("IE0000000001", "TEST.AS")
+        etf, _ = MarketDataYahooFinance().fetch("IE0000000001", "TEST.AS")
 
     assert etf.market_data.indicative.currency == "EUR"
     assert etf.agg_info.fund_currency == "EUR"
@@ -102,7 +102,7 @@ def test_fetch_translates_rate_limit_error():
         side_effect=yf_exceptions.YFRateLimitError(),
     ):
         with pytest.raises(ProviderConnectionError):
-            YahooFinanceAdapter().fetch("US0378331005", "AAPL")
+            MarketDataYahooFinance().fetch("US0378331005", "AAPL")
 
 
 def test_fetch_translates_missing_ticker_error():
@@ -113,7 +113,7 @@ def test_fetch_translates_missing_ticker_error():
         side_effect=yf_exceptions.YFTickerMissingError("INVALID", "Ticker not found"),
     ):
         with pytest.raises(ProviderSymbolError):
-            YahooFinanceAdapter().fetch("US0378331005", "INVALID")
+            MarketDataYahooFinance().fetch("US0378331005", "INVALID")
 
 
 def test_fetch_translates_missing_prices_error():
@@ -127,7 +127,7 @@ def test_fetch_translates_missing_prices_error():
         ),
     ):
         with pytest.raises(ProviderDataError):
-            YahooFinanceAdapter().fetch("US0378331005", "INVALID")
+            MarketDataYahooFinance().fetch("US0378331005", "INVALID")
 
 
 def test_fetch_translates_request_exception():
@@ -138,7 +138,7 @@ def test_fetch_translates_request_exception():
         side_effect=requests.exceptions.ConnectionError("Connection failed"),
     ):
         with pytest.raises(ProviderConnectionError):
-            YahooFinanceAdapter().fetch("US0378331005", "AAPL")
+            MarketDataYahooFinance().fetch("US0378331005", "AAPL")
 
 
 def test_fetch_translates_missing_timezone_error():
@@ -149,7 +149,7 @@ def test_fetch_translates_missing_timezone_error():
         side_effect=yf_exceptions.YFTzMissingError("AAPL"),
     ):
         with pytest.raises(ProviderDataError):
-            YahooFinanceAdapter().fetch("US0378331005", "AAPL")
+            MarketDataYahooFinance().fetch("US0378331005", "AAPL")
 
 
 def test_fetch_translates_invalid_period_error():
@@ -162,7 +162,7 @@ def test_fetch_translates_invalid_period_error():
         ),
     ):
         with pytest.raises(ProviderDataError):
-            YahooFinanceAdapter().fetch("US0378331005", "AAPL")
+            MarketDataYahooFinance().fetch("US0378331005", "AAPL")
 
 
 def test_fetch_translates_not_implemented_error():
@@ -173,4 +173,4 @@ def test_fetch_translates_not_implemented_error():
         side_effect=yf_exceptions.YFNotImplementedError("history"),
     ):
         with pytest.raises(ProviderDataError):
-            YahooFinanceAdapter().fetch("US0378331005", "AAPL")
+            MarketDataYahooFinance().fetch("US0378331005", "AAPL")

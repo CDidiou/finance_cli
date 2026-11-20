@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+{
+      "name": "finance-cli (debug prompt interactif)",
+      "type": "debugpy",
+      "request": "launch",
+      "python": "C:/Users/Domi/AppData/Local/pypoetry/Cache/virtualenvs/finance-cli-wYSDL04J-py3.12/Scripts/python.exe",
+      "module": "finance_cli.cli",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "env": {
+        "VIRTUAL_ENV": "C:/Users/Domi/AppData/Local/pypoetry/Cache/virtualenvs/finance-cli-wYSDL04J-py3.12",
+        "PATH": "C:/Users/Domi/AppData/Local/pypoetry/Cache/virtualenvs/finance-cli-wYSDL04J-py3.12/Scripts;${env:PATH}"
+      }
+    }
+  ]
+}

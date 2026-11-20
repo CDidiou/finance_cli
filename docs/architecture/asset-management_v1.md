@@ -204,7 +204,7 @@ In particular, intermediate market data and daily quotes must not be treated as 
 
 External provider adapters isolate communication with third-party data sources.
 
-For example, `YahooFinanceAdapter` is responsible for interacting with Yahoo Finance.
+For example, `MarketDataYahooFinance` is responsible for interacting with Yahoo Finance.
 
 Its responsibilities include:
 

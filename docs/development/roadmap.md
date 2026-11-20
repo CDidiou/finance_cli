@@ -169,7 +169,7 @@ The workflow is:
 AssetService
     |
     v
-YahooFinanceAdapter
+MarketDataYahooFinance
     |
     v
 External market data
